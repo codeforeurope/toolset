@@ -1,8 +1,8 @@
-#toolset for Linux -
+# toolset for Linux -
 >sudo apt-get update
 >sudo apt-get install build-essential checkinstall libssl-dev
 
-#Install NVM - for node
+# Install NVM - for node
 
 >curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.32.1/install.sh | bash
 
@@ -12,7 +12,7 @@ Check which version you can install
 Make sure latest version of npm installed
 > npm install npm@latest -g
 
-#git 
+# git 
 
 Install Git
 > npm install git -g
@@ -20,7 +20,7 @@ Install dotEnv for sensitive connection information saved in .env files
 > npm install dotenv -g
 
 
-#TODO
+# TODO
 Virtual Box img - with setup done
 * All you need then is the image and Virtual box installed
  
@@ -32,12 +32,12 @@ NodeJS (advantages unit test, linting, security, enforced coding standards)
 * R 
 
 
-#Databases
+# Databases
 * Mongo (for json / read data)
 * Firebase (realtime)
 * Postgres (for spatial data / higher performance)
 
-#HTML
+# HTML
 * Handlebars 
 * SASS
 * React
@@ -46,7 +46,7 @@ NodeJS (advantages unit test, linting, security, enforced coding standards)
 
 
 
-#IDE 
+# IDE 
 *Visual Studio Code Insiders
 >curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
 >sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
@@ -60,13 +60,13 @@ Then to Open your project when in relevant directory
 * sublime
 * insert favourite text editor here
 
-#Testing
+# Testing
 Travis - https://travis-ci.org/ with travis.yml file defining the automatic test and deploy
 
 
 
 
-#Communication
+# Communication
 * Trello outdated - move to github
 * use email
 * slack bot 
