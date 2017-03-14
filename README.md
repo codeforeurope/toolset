@@ -1,24 +1,31 @@
 # toolset for Linux -
->sudo apt-get update
->sudo apt-get install build-essential checkinstall libssl-dev
-
+```shell
+sudo apt-get update
+sudo apt-get install build-essential checkinstall libssl-dev
+```
 # Install NVM - for node
-
->curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.32.1/install.sh | bash
-
+```shell
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.32.1/install.sh | bash
+```
 ## Check which version you can install 
-> nvm ls-remote
-> nvm install 7.7.2 #for example
+```shell
+ nvm ls-remote
+ nvm install 7.7.2 #for example
+```
 ## Make sure latest version of npm installed
-> npm install npm@latest -g
-
+```shell
+ npm install npm@latest -g
+```
 # git 
 
 ## Install Git
-> npm install git -g
+```shell
+ npm install git -g
+```
 ## Install dotEnv for sensitive connection information saved in .env files
-> npm install dotenv -g
-
+```shell
+ npm install dotenv -g
+```
 
 # TODO
 ## Virtual Box img - with setup done
@@ -48,13 +55,15 @@ NodeJS (advantages unit test, linting, security, enforced coding standards)
 
 # IDE 
 *Visual Studio Code Insiders
->curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
->sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
->sudo sh -c 'echo "deb [arch=amd64] http://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
->sudo apt-get update
->sudo apt-get install code-insiders
+```shell
+curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
+sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
+sudo sh -c 'echo "deb [arch=amd64] http://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
+sudo apt-get update
+sudo apt-get install code-insiders
+code-insiders . 
+```
 ## Then to Open your project when in relevant directory
-> code-insiders . 
 
 * brackets.io
 * sublime
