@@ -26,6 +26,14 @@ curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.32.1/install.sh | b
 ```shell
  npm install dotenv -g
 ```
+## Install Standard for linting 
+```shell
+npm install standard -g 
+```
+### Run standard on your code - it can also be installed as an extension to code-insiders
+```shell 
+standard --fix 
+```
 
 # TODO
 ## Virtual Box img - with setup done
@@ -61,6 +69,7 @@ sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
 sudo sh -c 'echo "deb [arch=amd64] http://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
 sudo apt-get update
 sudo apt-get install code-insiders
+sudo update-alternatives --set editor /usr/bin/code-insiders
 code-insiders . 
 ```
 ## Then to Open your project when in relevant directory
@@ -73,7 +82,12 @@ code-insiders .
 Travis - https://travis-ci.org/ with travis.yml file defining the automatic test and deploy
 
 
-
+# Translation i18n
+## https://www.transifex.com/
+```script 
+sudo apt install transifex-client
+```
+### Login and register and copy setting to ~/.transifexrc
 
 # Communication
 * Trello outdated - move to github
