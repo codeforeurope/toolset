@@ -74,9 +74,22 @@ code-insiders .
 ```
 ## Then to Open your project when in relevant directory
 
+
+
 * brackets.io
 * sublime
 * insert favourite text editor here
+
+# Debug
+```shell
+node --inspect --debug-brk filename.js
+```
+
+https://developer.chrome.com/devtools/docs/debugger-protocol
+[https://code.visualstudio.com/blogs/2016/02/23/introducing-chrome-debugger-for-vs-code](Add chrome as external debugger)
+https://chrome.google.com/webstore/detail/nim-node-inspector-manage/gnhhdgbaldcilmgcpfddgdbkhjohddkj
+(NIM)
+https://github.com/yury-s/v8-inspector
 
 # Testing
 Travis - https://travis-ci.org/ with travis.yml file defining the automatic test and deploy
@@ -88,6 +101,8 @@ Travis - https://travis-ci.org/ with travis.yml file defining the automatic test
 sudo apt install transifex-client
 ```
 ### Login and register and copy setting to ~/.transifexrc
+#### tx pull
+#### tx push
 
 # Communication
 * Trello outdated - move to github
