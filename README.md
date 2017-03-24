@@ -1,4 +1,4 @@
-# toolset for Linux -
+# toolset for Ubuntu -
 ```shell
 sudo apt-get update
 sudo apt-get install build-essential checkinstall libssl-dev
@@ -72,6 +72,48 @@ sudo apt-get install code-insiders
 sudo update-alternatives --set editor /usr/bin/code-insiders
 code-insiders . 
 ```
+## For Extensions to see what you have installed
+```command
+ctrl-shift-p ext @installed 
+```
+![Extensions Installed Picture](code-insiders-extensions.png)
+
+for debuging in code-insiders copy this into .vscode/launch.json where 3000 is your port and you are debugging on localhost
+
+```json
+{
+    // Use IntelliSense to learn about possible Node.js debug attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+    {
+             "name": "Debug",
+                "type": "chrome",
+                "request": "launch",
+                "webRoot": "${workspaceRoot}",
+                "url": "http://localhost:3000", 
+                "userDataDir": "${workspaceRoot}/.vscode/chrome",
+                "sourceMaps": true,
+                "preLaunchTask": "development",
+                "smartStep": true,
+                "internalConsoleOptions": "openOnSessionStart",
+                "skipFiles": [
+                    "${workspaceRoot}/node_modules/**/*.js",
+                    "${workspaceRoot}/lib/**/*.js"
+                ],
+    "sourceMapPathOverrides": {
+        "/source/*": "${workspaceRoot}/*",
+        "webpack:///./*":   "${webRoot}/*",                    // Example: "webpack:///./src/app.js" -> "/users/me/project/src/app.js",
+        "webpack:///./~/*": "${workspaceRoot}/node_modules/*", // Example: "webpack:///./~/querystring/index.js" -> "/Users/me/project/node_modules/querystring/index.js"
+        "webpack:///*":     "*",                               // Example: "webpack:///C:/project/app.ts" -> "C:/project/app.ts"
+        "meteor://💻app/*": "${webRoot}/*"                    // Example: "meteor://💻app/main.ts" -> "c:/code/main.ts"
+    }   
+    }
+    ]
+}
+
+```
 ## Then to Open your project when in relevant directory
 
 
@@ -109,3 +151,27 @@ sudo apt install transifex-client
 * use email
 * slack bot 
 * email address per project
+
+# React 
+If using react can follow the following guideline to get running quickly
+
+https://react-server.io/docs
+```script
+
+# install yeoman
+npm install -g yo
+
+# install the react-server generator
+npm install -g generator-react-server
+
+# make a new react-server project in the CURRENT directory
+yo react-server
+
+# run the new app
+npm run start
+
+# go to http://localhost:3000
+```
+
+
+
