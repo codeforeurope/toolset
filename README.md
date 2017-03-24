@@ -22,10 +22,48 @@ curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.32.1/install.sh | b
 ```shell
  npm install git -g
 ```
+## set up git 
+```shell 
+git config --user.username x@x.com
+git config --user.password
+```
+Recommend setting up ssh as it will save a lot of time for you typing passwords and encrypts your traffic
+https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/
+
+```shell 
+ssh-keygen -t rsa -b 4096 -C "x@x.com"
+##  put in passphrase for cert
+## assuming you save to default filename - you can change below if you pick different file name
+## add to agent
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_rsa
+```
+
+Then add to your github profile 
+https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/
+
+```shell
+sudo apt-get install xclip
+# Downloads and installs xclip. If you don't have `apt-get`, you might need to use another installer (like `yum`)
+
+xclip -sel clip < ~/.ssh/id_rsa.pub
+# Copies the contents of the id_rsa.pub file to your clipboard
+```
+Add under your ssh key on your github profile
+
+
 ## Install dotEnv for sensitive connection information saved in .env files
 ```shell
- npm install dotenv -g
+ npm install dotenv-safe --save 
 ```
+In your JS files you can include API tokens by 
+```javascript
+require('dotenv-safe').load({
+  allowEmptyValues: true,
+  sample: 'sample.env'
+})
+```
+where your tokens are in a .env file in the root of the project and sample.env is also in root of the project and contains the variables you expect to use
 ## Install Standard for linting 
 ```shell
 npm install standard -g 
@@ -71,6 +109,20 @@ sudo apt-get update
 sudo apt-get install code-insiders
 sudo update-alternatives --set editor /usr/bin/code-insiders
 code-insiders . 
+```
+## For settings 
+```command 
+ctrl-shift-p settings
+# select user settings 
+```
+Example user Setting or per workspace settings
+
+```json
+{
+    "telemetry.enableCrashReporter": false,
+    "telemetry.enableTelemetry": false,
+    "prettier.tabWidth": 2,
+}
 ```
 ## For Extensions to see what you have installed
 ```command
