@@ -119,19 +119,21 @@ Example user Setting or per workspace settings
 
 ```json
 {
-    "telemetry.enableCrashReporter": false,
-    "telemetry.enableTelemetry": false,
-    "prettier.tabWidth": 2,
+  "telemetry.enableCrashReporter": false,
+  "telemetry.enableTelemetry": false,
+  "prettier.tabWidth": 2,
+  "editor.tabSize": 2,
+  "editor.detectIndentation": false
 }
 ```
 ## For Extensions to see what you have installed
 ```command
-ctrl-shift-p ext @installed 
+ctrl-shift-x ext @installed 
 ```
 ![Extensions Installed Picture](code-insiders-extensions.png)
 
 for debuging in code-insiders copy this into .vscode/launch.json where 3000 is your port and you are debugging on localhost
-
+[tasks.json](https://raw.githubusercontent.com/skolmer/react-hot-boilerplate-vscode/master/.vscode/tasks.json)
 ```json
 {
     // Use IntelliSense to learn about possible Node.js debug attributes.
@@ -166,10 +168,17 @@ for debuging in code-insiders copy this into .vscode/launch.json where 3000 is y
 }
 
 ```
+
+
 ## Then to Open your project when in relevant directory
+```shell 
+code-insiders .
+```
+For other code-insiders resources
 
+https://github.com/viatsko/awesome-vscode 
 
-
+Other ide include
 * brackets.io
 * sublime
 * insert favourite text editor here
@@ -205,10 +214,13 @@ sudo apt install transifex-client
 * email address per project
 
 # React 
+## Preact / Inferno can be accomodated 
 If using react can follow the following guideline to get running quickly
 
 https://react-server.io/docs
 ```script
+npm install --save react react-dom
+
 
 # install yeoman
 npm install -g yo
@@ -224,6 +236,74 @@ npm run start
 
 # go to http://localhost:3000
 ```
+Other tools for React include lighthouse (performance debugging in browser extension), rch, react-monocle (component hirearchy) , rg (redux generate)
+```shell
+npm i -g lighthouse redux-generators react-component-hierarchy react-monocle react-quick-templates
+rqt --help
+```
+
+## useful tool
+```shell
+
+npm i -g html-to-react-components
+html2react index.html -c es5 -m es6 -e js -o ./components
+```
+
+# Style 
+
+## To convert existing style to react use
+http://staxmanade.com/CssToReact/
+
+
+# Caching ServiceWorker and Performance analysis
+
+# Packing resource files 
+
+```shell
+npm install -g webpack
+
+npm install -D babel-core babel-loader babel-preset-es2015 babel-preset-react babel-preset-stage-0
 
 
 
+```
+Add .babelrc and webpack.config.js file to project
+
+## Alternative to webpack
+Rollup - not webpack 
+```shell
+npm install -g rollup
+```
+
+## Fonts 
+Woff2 
+https://github.com/CrocoDillon/font-store
+
+http://bdadam.com/blog/loading-webfonts-with-high-performance.html
+
+
+# Mongodb
+https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/
+```shell
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 0C49F3730359A14518585931BC711F9BA15703C6
+
+echo "deb [ arch=amd64,arm64 ] http://repo.mongodb.org/apt/ubuntu yakkety/mongodb-org/3.4 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.4.list
+
+sudo apt-get install -y mongodb-org
+
+sudo service mongod start
+
+```
+
+# Other References 
+Other toolset / setup pages 
+[Ory] (https://github.com/ory/workshop-dbg)
+Code coverage
+[Nyc](https://github.com/istanbuljs/nyc)
+
+# Testing 
+[Protractor] 
+
+
+# JSON HTTP endpoints 
+[httpie](https://github.com/jakubroztocil/httpie)
