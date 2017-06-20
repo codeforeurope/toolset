@@ -3,6 +3,7 @@
 [Assemble](https://github.com/assemble/assemble-workshop)
 
 [Common Code problems](https://github.com/blakeembrey/code-problems)
+[Interactive coding challenges](https://github.com/donnemartin/interactive-coding-challenges)
 
 [Koa](https://github.com/koajs/kick-off-koa)
 

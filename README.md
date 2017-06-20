@@ -1,28 +1,34 @@
 # toolset for Ubuntu
+
 ```shell
 sudo apt-get update
 sudo apt-get install build-essential checkinstall libssl-dev
 ```
 # Install NVM - for node
+
 ```shell
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.32.1/install.sh | bash
 ```
 ## Check which version you can install 
+
 ```shell
  nvm ls-remote
  nvm install 7.7.2 #for example
 ```
 ## Make sure latest version of npm installed
+
 ```shell
  npm install npm@latest -g
 ```
 # git 
 
 ## Install Git
+
 ```shell
- npm install git -g
+ sudo apt install git
 ```
 ## set up git 
+
 ```shell 
 git config --user.username x@x.com
 git config --user.password
@@ -53,6 +59,7 @@ Add under your ssh key on your github profile
 
 
 ## Install dotEnv for sensitive connection information saved in .env files
+
 ```shell
  npm install dotenv-safe --save 
 ```
@@ -64,21 +71,28 @@ require('dotenv-safe').load({
 })
 ```
 where your tokens are in a .env file in the root of the project and sample.env is also in root of the project and contains the variables you expect to use
+
 ## Install Standard for linting 
+
 ```shell
 npm install standard -g 
 ```
+
 ### Run standard on your code - it can also be installed as an extension to code-insiders
+
 ```shell 
 standard --fix 
 ```
 
 # TODO
+
 ## Virtual Box img - with setup done
+
 * All you need then is the image and Virtual box installed
  
 
 # Code
+
 NodeJS (advantages unit test, linting, security, enforced coding standards)
 * Python
 * JS
@@ -86,11 +100,13 @@ NodeJS (advantages unit test, linting, security, enforced coding standards)
 
 
 # Databases
+
 * Mongo (for json / read data)
 * Firebase (realtime)
 * Postgres (for spatial data / higher performance)
 
 # HTML
+
 * Handlebars 
 * SASS
 * React
@@ -100,6 +116,7 @@ NodeJS (advantages unit test, linting, security, enforced coding standards)
 
 
 # IDE 
+
 *Visual Studio Code Insiders
 ```shell
 curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
@@ -111,6 +128,7 @@ sudo update-alternatives --set editor /usr/bin/code-insiders
 code-insiders . 
 ```
 ## For settings 
+
 ```command 
 ctrl-shift-p settings
 # select user settings 
@@ -127,6 +145,7 @@ Example user Setting or per workspace settings
 }
 ```
 ## For Extensions to see what you have installed
+
 ```command
 ctrl-shift-x ext @installed 
 ```
@@ -171,6 +190,7 @@ for debuging in code-insiders copy this into .vscode/launch.json where 3000 is y
 
 
 ## Then to Open your project when in relevant directory
+
 ```shell 
 code-insiders .
 ```
@@ -195,26 +215,33 @@ https://chrome.google.com/webstore/detail/nim-node-inspector-manage/gnhhdgbaldci
 https://github.com/yury-s/v8-inspector
 
 # Testing
+
 Travis - https://travis-ci.org/ with travis.yml file defining the automatic test and deploy
 
 
 # Translation i18n
+
 ## https://www.transifex.com/
+
 ```script 
 sudo apt install transifex-client
 ```
 ### Login and register and copy setting to ~/.transifexrc
+
 #### tx pull
 #### tx push
 
 # Communication
+
 * Trello outdated - move to github
 * use email
 * slack bot 
 * email address per project
 
 # React 
+
 ## Preact / Inferno can be accomodated 
+
 If using react can follow the following guideline to get running quickly
 
 https://react-server.io/docs
@@ -243,6 +270,7 @@ rqt --help
 ```
 
 ## useful tool
+
 ```shell
 
 npm i -g html-to-react-components
@@ -252,6 +280,7 @@ html2react index.html -c es5 -m es6 -e js -o ./components
 # Style 
 
 ## To convert existing style to react use
+
 http://staxmanade.com/CssToReact/
 
 
@@ -270,19 +299,23 @@ npm install -D babel-core babel-loader babel-preset-es2015 babel-preset-react ba
 Add .babelrc and webpack.config.js file to project
 
 ## Alternative to webpack
+
 Rollup - not webpack 
 ```shell
 npm install -g rollup
 ```
 
 ## Fonts 
+
 Woff2 
 https://github.com/CrocoDillon/font-store
 
 http://bdadam.com/blog/loading-webfonts-with-high-performance.html
 
 
+
 # Mongodb
+
 https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/
 ```shell
 sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 0C49F3730359A14518585931BC711F9BA15703C6
@@ -296,16 +329,19 @@ sudo service mongod start
 ```
 
 # Other References 
+
 Other toolset / setup pages 
 [Ory] (https://github.com/ory/workshop-dbg)
 Code coverage
 [Nyc](https://github.com/istanbuljs/nyc)
 
 # Testing 
+
 [Protractor] 
 
 
 # JSON HTTP endpoints 
+
 [httpie](https://github.com/jakubroztocil/httpie)
 
 

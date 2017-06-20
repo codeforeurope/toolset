@@ -1,12 +1,12 @@
 # How To Set Up a Node.js Application for Production on Ubuntu 16.04
-with PM2 & Nginx
 
+with PM2 & Nginx
 
 ## Create User
 
 as a root, run below commands on server:
 
-```
+```bash
 # adduser tomy
 # usermod -aG sudo tomy
 ```
@@ -15,13 +15,13 @@ as a root, run below commands on server:
 
 on your local machine (osx), runs below:
 
-```
-$ ssh-keygen
+```bash
+ssh-keygen
 ```
 
 Assuming your local user is called "localuser", you will see output like this:
 
-```
+```bash
 ssh-keygen output
 Generating public/private rsa key pair.
 Enter file in which to save the key (/Users/localuser/.ssh/id_rsa):
@@ -35,7 +35,7 @@ If your local machine has the ssh-copy-id script installed, you can use it to in
 
 Run the ssh-copy-id script by specifying the user and IP address of the server that you want to install the key on, like this:
 
-```
+```bash
 ssh-copy-id tomy@SERVER_IP_ADDRESS
 ```
 
@@ -45,7 +45,7 @@ After providing your password at the prompt, your public key will be added to th
 
 Assuming you generated an SSH key pair using the previous step, use the following command at the terminal of your local machine to print your public key (id_rsa.pub):
 
-```
+```bash
 cat ~/.ssh/id_rsa.pub
 ```
 
@@ -55,7 +55,7 @@ To enable the use of SSH key to authenticate as the new remote user, you must ad
 
 On the server, as the root user, enter the following command to temporarily switch to the new user (substitute your own user name):
 
-```
+```bash
 su - tomy
 ```
 
@@ -63,14 +63,14 @@ Now you will be in your new user's home directory.
 
 Create a new directory called .ssh and restrict its permissions with the following commands:
 
-```
+```bash
 mkdir ~/.ssh
 chmod 700 ~/.ssh
 ```
 
 Now open a file in .ssh called authorized_keys with a text editor. We will use nano to edit the file:
 
-```
+```bash
 nano ~/.ssh/authorized_keys
 ```
 
@@ -80,13 +80,13 @@ Hit CTRL-x to exit the file, then y to save the changes that you made, then ENTE
 
 Now restrict the permissions of the authorized_keys file with this command:
 
-```
+```bash
 chmod 600 ~/.ssh/authorized_keys
 ```
 
 Type this command once to return to the root user:
 
-```
+```bash
 exit
 ```
 
@@ -97,11 +97,11 @@ Now your public key is installed, and you can use SSH keys to log in as your use
 
 runs below as root (see step no. 1 above):
 
-```
-$ sudo apt-get update & apt-get upgrade
-$ sudo apt-get install libkrb5-dev build-essential
-$ curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash -
-$ sudo apt-get install -y nodejs
+```bash
+sudo apt-get update & apt-get upgrade
+sudo apt-get install libkrb5-dev build-essential
+curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash -
+sudo apt-get install -y nodejs
 
 ```
 
@@ -109,75 +109,75 @@ $ sudo apt-get install -y nodejs
 
 runs below as root :
 
-```
-$ sudo npm install pm2 -g --unsafe-perm
+```bash
+sudo npm install pm2 -g --unsafe-perm
 ```
 
 as 'safe user', now we have to create PM2 startup service:
 
-```
-$ sudo su -c "env PATH=$PATH:/usr/bin pm2 startup systemd -u tomy --hp /home/tomy"
+```bash
+sudo su -c "env PATH=$PATH:/usr/bin pm2 startup systemd -u tomy --hp /home/tomy"
 ```
 
 This will create a systemd unit which runs pm2 for your user on boot. This pm2 instance, in turn, runs hello.js or any script or apps you have defined. You can check the status of the systemd unit with systemctl:
 
-```
-$ systemctl status pm2
+```bash
+systemctl status pm2
 ```
 
 ### Other PM2 Usage (Optional)
 
 Stop an application with this command (specify the PM2 App name or id):
 
-```
-$ pm2 stop app_name_or_id
+```bash
+pm2 stop app_name_or_id
 ```
 
 
 Restart an application with this command (specify the PM2 App name or id):
 
-```
-$ pm2 restart app_name_or_id
+```bash
+pm2 restart app_name_or_id
 ```
 
 
 The list of applications currently managed by PM2 can also be looked up with the list subcommand:
 
-```
-$ pm2 list
+```bash
+pm2 list
 ```
 
 
 More information about a specific application can be found by using the info subcommand (specify the PM2 App name or id):
 
-```
-$ pm2 info example
+```bash
+pm2 info example
 ```
 
 The PM2 process monitor can be pulled up with the monit subcommand. This displays the application status, CPU, and memory usage:
 
-```
-$ pm2 monit
+```bash
+pm2 monit
 ```
 
 
 ## Install Nginx
 
-```
-$ sudo apt-get install nginx
+```bash
+sudo apt-get install nginx
 ```
 
 ### Adjust Firewall
 
 We can list the applications configurations that ufw knows how to work with by typing:
 
-```
-$ sudo ufw app list
+```bash
+sudo ufw app list
 ```
 
 You should get a listing of the application profiles:
 
-```
+```bash
 Output
 Available applications:
   Nginx Full
@@ -196,19 +196,19 @@ As you can see, there are three profiles available for Nginx:
 
 You can enable this by typing:
 
-```
-$ sudo ufw allow 'Nginx HTTP'
+```bash
+sudo ufw allow 'Nginx HTTP'
 ```
 
 You can verify the change by typing:
 
-```
-$ sudo ufw status
+```bash
+sudo ufw status
 ```
 
 You should see HTTP traffic allowed in the displayed output:
 
-```
+```bash
 Output
 Status: active
 
@@ -226,8 +226,8 @@ At the end of the installation process, Ubuntu 16.04 starts Nginx. The web serve
 
 We can check with the systemd init system to make sure the service is running by typing:
 
-```
-$ systemctl status nginx
+```bash
+systemctl status nginx
 
 Output
 ● nginx.service - A high performance web server and a reverse proxy server
@@ -243,19 +243,19 @@ Output
 
 In this section, you'll learn how to set up a reverse proxy with nginx in a few simple steps.
 
-```
-$ sudo cp /etc/nginx/sites-available/default /etc/nginx/sites-available/test.com
+```bash
+sudo cp /etc/nginx/sites-available/default /etc/nginx/sites-available/test.com
 ```
 
 Open the new file with sudo privileges in your editor:
 
-```
-$ sudo nano /etc/nginx/sites-available/test.com
+```bash
+sudo nano /etc/nginx/sites-available/test.com
 ```
 
 When you are finished, your file will likely look something like this:
 
-```
+```bash
 upstream node-helloworld.your-domain.com {
         server 127.0.0.1:5000;
         keepalive 64;
@@ -291,13 +291,13 @@ Now that we have our server block files, we need to enable them. We can do this 
 
 We can create these links by typing:
 
-```
-$ sudo ln -s /etc/nginx/sites-available/test.com /etc/nginx/sites-enabled/
+```bash
+sudo ln -s /etc/nginx/sites-available/test.com /etc/nginx/sites-enabled/
 ```
 
 Note: to be able to reference multiple domains for one Node.js app (like www.example.com and example.com) you need to add the following code to the file /etc/nginx/nginx.conf in the http section:
 
-```
+```bash
 server_names_hash_bucket_size 64;
 ```
 
@@ -305,14 +305,14 @@ If the DNS changes are propagated, you can point your web browser to your domain
 
 Next, test to make sure that there are no syntax errors in any of your Nginx files:
 
-```
-$ sudo nginx -t
+```bash
+sudo nginx -t
 ```
 
 If no problems were found, restart Nginx to enable your changes:
 
-```
-$ sudo systemctl restart nginx
+```bash
+sudo systemctl restart nginx
 ```
 
 Nginx should now be serving both of your domain names.
